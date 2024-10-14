@@ -34,8 +34,8 @@
     <main>
         <div class="container">
             <div class="content m-auto p-4" >
-                    <button class="m-auto p-2"class="content m-auto p-4" id ="toggleButton">See more information</button>
-                    <ul id="hiddenBlock">
+                <br><button class="m-auto p-2"class="content m-auto p-4" id ="toggleButton">See more information</button>
+                    <ul id="hiddenBlock"><br>
                         <li>Задание 1 и 7</li>
                         <a href="http://kubsu.ru/" id= "Джунгарик" title="Официальный сайт Кубанского государственного университета">Абсолютная гиперссылка на главную страницу сайта kubsu.ru и ссылка с тремя параметрами в URL</a>
                         <li>Задание 2</li>
@@ -114,14 +114,14 @@
                                     <td><p class="four">Porsche 911 GT3 RS</p>
                                         <img src="Porche.png" width="300"/></td>
                                     <td>Porsche 911 GT3 RS — это двухместное спортивное купе премиум-класса. Технические характеристики: оппозитная атмосферная бензиновая шестерка объёмом 3996 кубических сантиметров; мощность — 520 лошадиных сил при 8250 об/мин и 470 Нм крутящего момента при 6000 оборотах коленчатого вала в минуту; семиступенчатая преселективная роботизированная коробка передач с двумя сцеплениями;максимальная скорость — 312 километров в час.</td>
-                                    <td>35 000 000 руб.</td>
+                                    <td>от 35 000 000 руб.</td>
                                 </tr>
                                 <tr>
                                     <td>Ferrari</td>
                                     <td><p class="five">Ferrari F8 Tributo</p>
                                         <img src="Ferrari.png" width="300"/></td>
                                     <td>Ferrari F8 Tributo — это двухместное купе, которое было представлено на международном автосалоне в Женеве 5 марта 2019 года. Основные характеристики: 720-сильный бензиновый двигатель V8 turbo — самый мощный мотор V8 в истории Ferrari; исключительная управляемость благодаря применению передовых решений в области аэродинамики; система контроля управляемости Side Slip Angle Control новейшей версии 6.1; система Ferrari Dynamic Enhancer (FDE+), которая индивидуально регулирует давление в тормозных механизмах.</td>
-                                    <td>от 30 000 000 руб</td>
+                                    <td>от 30 000 000 руб.</td>
                                 </tr>
                                 <tr>
                                     <td>Pagani</td>
@@ -133,11 +133,27 @@
                             </tbody>
                         </table><br>
                     </div>
+                    <div class="container m-auto p-3" id="calc">
+                        <h1>Калькулятор стоимости заказа</h1>
+                        <label for="quantity">Количество:</label>
+                        <input class="p-1 mb-1" type="number" id="quantity" min="1" value="1">
+                        <label for="product">Товар:</label>
+                        <select class="p-1 mb-3" id="product">
+                            <option value="12500000">BMW M8 Competition (12 500 000 руб.)</option>
+                            <option value="9900000">Mercedes-Benz AMG GT 63 S (9 900 000 руб.)</option>
+                            <option value="7000000">Nissan GT-R (7 000 000 руб.)</option>
+                            <option value="35000000">Porsche 911 GT3 RS (35 000 000 руб.)</option>
+                            <option value="30000000">Ferrari F8 Tributo (30 000 000 руб.)</option>
+                            <option value="171000000">Pagani Zonda (171 000 000 руб.)</option>
+                        </select>
+                        <button id="calculate">Рассчитать стоимость</button>
+                        <div class = "mt-2" id="result"></div>
+                    </div><br>
                     <form action="test@example.com">
                         <div class="row">
-                            <label>ФИО: <input type="text" required = "required"><br></label>
-                            <label>Телефон: <input type="tel" required = "required"><br></label>
-                            <label>E-mail: <input type="email" required = "required"><br></label>
+                            <label>ФИО: <input type="text" placeholder="Алексей" required = "required"><br></label>
+                            <label>Телефон: <input type="tel" placeholder="Алексеев" required = "required"><br></label>
+                            <label>E-mail: <input type="email" placeholder="example@mail.ru" required = "required"><br></label>
                             <label>Дата рождения: <input type="date" required = "required"><br></label>
 
                             <label>Пол:</label>
@@ -191,5 +207,18 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        const quantityInput = document.getElementById('quantity');
+        const productSelect = document.getElementById('product');
+        const calculateButton = document.getElementById('calculate');
+        const resultDiv = document.getElementById('result');
+    
+        calculateButton.addEventListener('click', () => {
+          const quantity = parseInt(quantityInput.value);
+          const price = parseInt(productSelect.value);
+          const totalCost = quantity * price;
+          resultDiv.textContent = `Стоимость заказа: ${totalCost} руб.`;
+        });
+      </script>
 </body>
 </html>
