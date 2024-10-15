@@ -213,15 +213,16 @@
         const calculateButton = document.getElementById('calculate');
         const resultDiv = document.getElementById('result');
         
-        if (quantity <= 0 || isNaN(quantity)) {
-          resultParagraph.textContent = 'Некорректное количество товара!';
-          return;
-        }
-        
         calculateButton.addEventListener('click', () => {
           const quantity = parseInt(quantityInput.value);
           const price = parseInt(productSelect.value);
           const totalCost = quantity * price;
+
+          if (quantity <= 0 || isNaN(quantity)) {
+              resultParagraph.textContent = 'Некорректное количество товара!';
+              return;
+          }
+          
           resultDiv.textContent = `Стоимость заказа: ${totalCost} руб.`;
         });
       </script>
